@@ -14,8 +14,8 @@ from flask import Flask, jsonify
 #################################################
 # Database Setup # -------> MAKE SURE the AWS database is set up locally first! <-----------------
 #################################################
-engine = create_engine("postgresql://krishna:London2022@groupcv2.ci6szv7owa4r.us-east-1.rds.amazonaws.com/groupc?options= -c search_path=dbo,public")
-#engine = create_engine("postgresql://postgres:sydney20@localhost/ds_salaries")
+#engine = create_engine("postgresql://krishna:London2022@groupcv2.ci6szv7owa4r.us-east-1.rds.amazonaws.com/groupc?options= -c search_path=dbo,public")
+engine = create_engine("postgresql://postgres:sydney20@localhost/ds_salaries")
 
 # reflect an existing database into a new model
 Base = automap_base()
