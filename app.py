@@ -9,6 +9,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, Column, Integer, String
 from flask import Flask, jsonify
+from flask_cors import CORS, cross_origin
 
 
 #################################################
@@ -57,6 +58,7 @@ ds_salaries = Base.classes.ds_salaries
 #################################################
 app = Flask(__name__)
 
+cors = CORS(app)
 #################################################
 # Flask Routes
 #################################################
@@ -72,6 +74,7 @@ def home():
 
 # Data Science Job Route
 @app.route("/api/v1.0/data_science_data")
+@cross_origin()
 def data_science():
     conn = psycopg2.connect(
         host="localhost",
