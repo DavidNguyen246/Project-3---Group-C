@@ -90,29 +90,48 @@ def data_science():
     # results = session.query(ds_salaries.work_year).all()
     # print(results)
     # session.close()
-    cur.execute('SELECT * FROM "ds_salaries"')
+    cur.execute('SELECT * FROM "krishnav2"')
     rows = cur.fetchall()
     dataScienceQuery = list(np.ravel(rows))
     # return jsonify(rows_x)
 
     # Create dictionary from row data and append to a list 
     all_data = []
-    for id, work_year, experience_level, employment_type, job_title, salary, \
-        salary_currency, salary_in_usd, employee_residence, remote_ratio, \
-        company_location, company_size in rows:
+ #  for id, work_year, experience_level, employment_type, job_title, salary, salary_currency, salary_in_usd, employee_residence, remote_ratio, company_location, company_size, latitude, longitude, country_code in rows:
+    for item in rows:
         data_dict = {}
-        data_dict['id'] = id
-        data_dict['work_year'] = work_year
-        data_dict['experience_level'] = experience_level
-        data_dict['employment_type'] = employment_type
-        data_dict['job_title'] = job_title
-        data_dict['salary'] = salary
-        data_dict['salary_currency'] = salary_currency
-        data_dict['salary_in_usd'] = salary_in_usd
-        data_dict['employee_residence'] = employee_residence
-        data_dict['remote_ratio'] = remote_ratio
-        data_dict['company_location'] = company_location
-        data_dict['company_size'] = company_size
+        #'US', 376, 2022, 'SE', 'FT', 'Data Analyst', 132000, 'USD', 132000, 'US', 0, 'US', 'M', '37.09024', '-95.712891'
+        #print(item)
+        data_dict['Country_code'] = item[0]
+        data_dict['id'] = item[1]
+        data_dict['Work_year'] = item[2]
+        data_dict['Experience_level'] = item[3]
+        data_dict['Employment_Type'] = item[4]
+        data_dict['Job_Title'] = item[5]
+        data_dict['Salary'] = item[6]
+        data_dict['Salary_Currency'] = item[7]
+        data_dict['Salary_USD'] = item[8]
+        data_dict['Employee_Residence'] = item[9]
+        data_dict['Remote_Ratio'] = item[10]
+        data_dict['Company_Location'] = item[11]
+        data_dict['Company_Size'] = item[12]
+        data_dict['Latitude'] = item[13]
+        data_dict['Longitude'] = item[14]
+        # data_dict['work_year'] = item['id']
+        # 
+        # data_dict['experience_level'] = item['experience_level']
+        # data_dict['employment_type'] = item['employment_type']
+        # data_dict['job_title'] = item['job_title']
+        # data_dict['salary'] = item['salary']
+        # data_dict['salary_currency'] = salary_currency
+        # data_dict['salary_in_usd'] = salary_in_usd
+        # data_dict['employee_residence'] = employee_residence
+        # data_dict['remote_ratio'] = remote_ratio
+        # data_dict['company_location'] = company_location
+        # data_dict['company_size'] = company_size
+        # data_dict['latitude'] = latitude 
+        # data_dict['longitude'] = longitude
+        
 
     # all_data = []
     # for work_year in results:
